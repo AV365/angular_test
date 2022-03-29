@@ -1,10 +1,11 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   template: `
-    <button class="button">
-      {{ button.size}}
+    <button [attr.disabled]="isDisabled ? '' : null" class="button">
+      {{ isDisabled | json }}
+      <ng-content></ng-content>
     </button>
   `,
   styles: [
@@ -61,24 +62,29 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
         opacity: 100;
       }
 
-      .button_disabled_true {
+      .button:disabled,
+      .button[disabled] {
         opacity: 0.2;
-      }
-      .button_disabled_false {
-        opacity: 100;
       }
     `,
   ],
 })
 export class ButtonComponent implements OnInit, OnChanges {
-  @Input() button: any;
+  @Input() isDisabled = false;
+  @Input() isActive = false;
 
-  constructor() {
-    console.log(this.button);
-  }
+  getColorClass = (val: string): string => {
+    let valReturn = 'button_color_default';
+    switch (val) {
+      case 'primary':
+        valReturn = 'button_color_primary';
+    }
+    return valReturn;
+  };
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void {
-  }
+  ngOnChanges(): void {}
 }
