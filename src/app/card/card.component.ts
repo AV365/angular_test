@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,17 +6,12 @@ import { Component, OnInit } from '@angular/core';
     <app-bage>card works!</app-bage>
     <app-rating>star</app-rating>
     <app-button>card works!</app-button>
-      
-    
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

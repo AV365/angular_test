@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,7 +14,7 @@ import {IconTooltipModule} from "./icon-tooltip/icon-tooltip.module";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CardModule, DropdownModule, IconTooltipModule],
+  imports: [BrowserModule, CardModule, DropdownModule, IconTooltipModule, ButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
