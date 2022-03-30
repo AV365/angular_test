@@ -11,5 +11,6 @@ export class AppComponent {
     size: 'large',
     color: 'primary',
     isDisabled: false,
+    isActive: false,
   };
 }
