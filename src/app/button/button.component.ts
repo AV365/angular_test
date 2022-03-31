@@ -17,10 +17,6 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
       .button {
         /* Auto layout */
 
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 12px 20px;
 
         /*position: absolute;*/
         /*width: 198px;*/
