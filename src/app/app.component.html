@@ -1,19 +1,500 @@
-<!--<p class="inter-class">Inter Font and Material Icon <span class="material-icons">done</span></p>-->
+<header>
+  <!-- Intro settings -->
+  <style>
+    #intro {
+      /* Margin to fix overlapping fixed navbar */
+      margin-top: 58px;
+    }
+    @media (max-width: 991px) {
+      #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 45px;
+      }
+    }
+  </style>
 
-<!--<app-button>Кнопка</app-button>-->
-<!--<app-rating>star</app-rating>-->
-<!--<app-bage>Скидка -17%</app-bage>-->
-<!--<app-icon>home</app-icon>-->
-<!--<app-tooltip>В смартфонах используются не только SIM-карты, но и более компактные версии micro SIM и nano SIM. eSIM это SIM-карта, интегрированная в телефон</app-tooltip>-->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
 
-<!--<app-card>Кнопка</app-card>-->
-<!--<app-dropdown [button]="button">Dropdown</app-dropdown>-->
-<!--<app-icon-tooltip>!!!{{button.size}}В смартфонах используются не только SIM-карты, но и более компактные версии micro SIM и nano SIM. eSIM это SIM-карта, интегрированная в телефон</app-icon-tooltip>-->
-<!--<app-button-->
-<!--  [isDisabled]="button?.isDisabled!"-->
-<!--  [isActive]="button?.isActive!"-->
-<!--  [color]="button?.color!"-->
-<!--  [size]="button?.size!"-->
-<!--  >Button!</app-button-->
-<!--&gt;-->
-<app-dropdown-menu [trigger]="'click'"></app-dropdown-menu>
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="/">
+        <strong class="blue-text">My Shop</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+<!--        <ul class="navbar-nav mr-auto">-->
+<!--          <li class="nav-item active">-->
+<!--            <a class="nav-link waves-effect" href="#">Home-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"-->
+<!--               target="_blank">Free download</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free-->
+<!--              tutorials</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+
+        <!-- Right -->
+
+
+
+
+
+
+        <ul class="navbar-nav nav-flex-icons">
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link waves-effect">-->
+<!--              <span class="badge bg-danger ms-2"> </span>-->
+<!--              <i class="fas fa-shopping-cart"></i>-->
+<!--              <span class="clearfix d-none d-sm-inline-block"> Cart </span>-->
+<!--            </a>-->
+<!--          </li>-->
+
+
+
+
+
+<!--          <li class="nav-item">-->
+<!--            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">-->
+<!--              <i class="fab fa-facebook-f"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">-->
+<!--              <i class="fab fa-twitter"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"-->
+<!--               target="_blank">-->
+<!--              <i class="fab fa-github mr-2"></i>MDB GitHub-->
+<!--            </a>-->
+<!--          </li>-->
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Jumbotron -->
+  <div id="intro" class="p-5 text-center bg-light">
+<!--    <h1 class="mb-3 h2">Learn Bootstrap 5 with MDB</h1>-->
+<!--    <p class="mb-3">Best & free guide of responsive web design</p>-->
+<!--    <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow"-->
+<!--       target="_blank">Start tutorial</a>-->
+<!--    <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"-->
+<!--       role="button">Download MDB UI KIT</a>-->
+  </div>
+  <!-- Jumbotron -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+<app-catalog [products]="products"></app-catalog>
+    <!--Section: Content-->
+
+    <!-- Pagination -->
+    <nav class="my-4" aria-label="...">
+      <ul class="pagination pagination-circle justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="bg-light text-lg-start">
+  <div class="py-4 text-center">
+    <a role="button" class="btn btn-primary btn-lg m-2"
+       href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">
+      Learn Bootstrap 5
+    </a>
+    <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
+      Download MDB UI KIT
+    </a>
+  </div>
+
+  <hr class="m-0" />
+
+  <div class="text-center py-4 align-items-center">
+    <p>Follow MDB on social media</p>
+    <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
+       rel="nofollow" target="_blank">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+       target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+       target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
+       target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!--Footer-->
+
+
+
+
+<!--&lt;!&ndash;<p class="inter-class">Inter Font and Material Icon <span class="material-icons">done</span></p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<app-button>Кнопка</app-button>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-rating>star</app-rating>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-bage>Скидка -17%</app-bage>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-icon>home</app-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-tooltip>В смартфонах используются не только SIM-карты, но и более компактные версии micro SIM и nano SIM. eSIM это SIM-карта, интегрированная в телефон</app-tooltip>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<app-card>Кнопка</app-card>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-dropdown [button]="button">Dropdown</app-dropdown>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-icon-tooltip>!!!{{button.size}}В смартфонах используются не только SIM-карты, но и более компактные версии micro SIM и nano SIM. eSIM это SIM-карта, интегрированная в телефон</app-icon-tooltip>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-button&ndash;&gt;-->
+<!--&lt;!&ndash;  [isDisabled]="button?.isDisabled!"&ndash;&gt;-->
+<!--&lt;!&ndash;  [isActive]="button?.isActive!"&ndash;&gt;-->
+<!--&lt;!&ndash;  [color]="button?.color!"&ndash;&gt;-->
+<!--&lt;!&ndash;  [size]="button?.size!"&ndash;&gt;-->
+<!--&lt;!&ndash;  >Button!</app-button&ndash;&gt;-->
+<!--&lt;!&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+<!--&lt;!&ndash; Intro settings &ndash;&gt;-->
+<!--<style>-->
+<!--  #intro {-->
+<!--    /* Margin to fix overlapping fixed navbar */-->
+<!--    margin-top: 58px;-->
+<!--  }-->
+<!--  @media (max-width: 991px) {-->
+<!--    #intro {-->
+<!--      /* Margin to fix overlapping fixed navbar */-->
+<!--      margin-top: 45px;-->
+<!--    }-->
+<!--  }-->
+<!--</style>-->
+<!--<nav class="navbar sticky-top  navbar-expand-lg navbar-light white scrolling-navbar">-->
+<!--  <div class="container">-->
+
+<!--    &lt;!&ndash; Brand &ndash;&gt;-->
+<!--    <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">-->
+<!--      <strong class="blue-text">Eshop</strong>-->
+<!--    </a>-->
+
+<!--    &lt;!&ndash; Collapse &ndash;&gt;-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<!--            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    &lt;!&ndash; Links &ndash;&gt;-->
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+
+<!--      &lt;!&ndash; Left &ndash;&gt;-->
+<!--&lt;!&ndash;      <ul class="navbar-nav mr-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item active">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link waves-effect" href="#">Home&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="sr-only">(current)</span>&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"&ndash;&gt;-->
+<!--&lt;!&ndash;             target="_blank">Free download</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free&ndash;&gt;-->
+<!--&lt;!&ndash;            tutorials</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ul>&ndash;&gt;-->
+
+<!--      &lt;!&ndash; Right &ndash;&gt;-->
+<!--      <ul class="navbar-nav nav-flex-icons">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link waves-effect">-->
+<!--            <span class="badge red z-depth-1 mr-1"> 1 </span>-->
+<!--            <i class="fas fa-shopping-cart"></i>-->
+<!--            <span class="clearfix d-none d-sm-inline-block"> Cart </span>-->
+<!--          </a>-->
+<!--        </li>-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="fab fa-facebook-f"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="fab fa-twitter"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"&ndash;&gt;-->
+<!--&lt;!&ndash;             target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="fab fa-github mr-2"></i>MDB GitHub&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--      </ul>-->
+
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</nav>-->
+<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+<!--<p>123123</p>-->
+
+
+
+<!--&lt;!&ndash;Main layout&ndash;&gt;-->
+<!--&lt;!&ndash;<main class="mt-5 pt-4" style="position: relative">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="container dark-grey-text mt-5">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="row wow fadeIn">&ndash;&gt;-->
+
+<!--&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-md-6 mb-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-md-6 mb-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash;Content&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="p-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge purple mr-1">Category 2</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge blue mr-1">New</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge red mr-1">Bestseller</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <p class="lead">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="mr-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                <del>$200</del>&ndash;&gt;-->
+<!--&lt;!&ndash;              </span>&ndash;&gt;-->
+<!--&lt;!&ndash;            <span>$100</span>&ndash;&gt;-->
+<!--&lt;!&ndash;          </p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <p class="lead font-weight-bold">Description</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa&ndash;&gt;-->
+<!--&lt;!&ndash;            sint voluptatibus!&ndash;&gt;-->
+<!--&lt;!&ndash;            Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <form class="d-flex justify-content-left">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Default input &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart&ndash;&gt;-->
+<!--&lt;!&ndash;              <i class="fas fa-shopping-cart ml-1"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          </form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;Content&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <hr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="row d-flex justify-content-center wow fadeIn">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <div class="col-md-6 text-center">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <h4 class="my-4 h4">Additional information</h4>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          voluptates,&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="row wow fadeIn">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <div class="col-lg-4 col-md-12 mb-4">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <div class="col-lg-4 col-md-6 mb-4">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <div class="col-lg-4 col-md-6 mb-4">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;Grid row&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;/.Footer&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <app-dropdown-menu [trigger]="'click'"></app-dropdown-menu>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <app-catalog [products]="products"></app-catalog>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</main>&ndash;&gt;-->
+<!--&lt;!&ndash;Main layout&ndash;&gt;-->
+
+<!--&lt;!&ndash;Footer&ndash;&gt;-->
+<!--<footer class="page-footer text-center font-small mt-4 wow fadeIn">-->
+
+<!--&lt;!&ndash;  &lt;!&ndash;Call to action&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="pt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"&ndash;&gt;-->
+<!--&lt;!&ndash;       role="button">Download MDB&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fas fa-download ml-2"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start&ndash;&gt;-->
+<!--&lt;!&ndash;      free tutorial&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fas fa-graduation-cap ml-2"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash;/.Call to action&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <hr class="my-4">&ndash;&gt;-->
+
+<!--  &lt;!&ndash; Social icons &ndash;&gt;-->
+<!--  <div class="pb-4">-->
+<!--&lt;!&ndash;    <a href="https://www.facebook.com/mdbootstrap" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-facebook-f mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://twitter.com/MDBootstrap" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-twitter mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-youtube mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-google-plus-g mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://dribbble.com/mdbootstrap" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-dribbble mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://pinterest.com/mdbootstrap" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-pinterest mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-github mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <a href="http://codepen.io/mdbootstrap/" target="_blank">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fab fa-codepen mr-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Social icons &ndash;&gt;-->
+
+<!--  &lt;!&ndash;Copyright&ndash;&gt;-->
+<!--  <div class="footer-copyright py-3">-->
+<!--&lt;!&ndash;    © 2018 Copyright:&ndash;&gt;-->
+<!--&lt;!&ndash;    <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>&ndash;&gt;-->
+<!--  </div>-->
+<!--  &lt;!&ndash;/.Copyright&ndash;&gt;-->
+
+<!--</footer>-->

@@ -3,14 +3,14 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 @Component({
   selector: 'app-button',
   template: `
-    <button
+    <a
       [attr.disabled]="isDisabled ? '' : null"
-      class="button"
+      class="btn btn-primary"
       [class.button_active_true]="isActive"
       [ngClass]="[currentColorClass, currentSizeClass]"
     >
       <ng-content></ng-content>
-    </button>
+    </a>
   `,
   styles: [
     `
@@ -52,7 +52,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
       /*Размер*/
 
       .button_size_default {
-        height: 20px;
+        /*height: 20px;*/
       }
 
       .button_size_small {
@@ -96,7 +96,7 @@ export class ButtonComponent implements OnInit, OnChanges {
     //Цвет
     switch (this.color) {
       case 'primary':
-        this.currentColorClass = 'button_color_primary';
+        this.currentColorClass = 'btn-primary';
         break;
       case 'accent':
         this.currentColorClass = 'button_color_accent';
