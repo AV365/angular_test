@@ -17,6 +17,7 @@ import { MenuModule } from './menu/menu.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogModule } from './catalog/catalog.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

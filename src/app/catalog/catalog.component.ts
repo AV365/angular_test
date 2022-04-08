@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { Product } from '../../data/products.data';
 
 @Component({
@@ -13,16 +13,22 @@ import { Product } from '../../data/products.data';
 
       <p>{{ inCart | json }}</p>
     </section>
+    <app-toggle
+      [toggles]="filterValues"
+      (changed)="setFilter($event)"
+    ></app-toggle>
     <section class="text-center">
       <h4 class="mb-5"><strong>Каталог</strong></h4>
 
-      <div class="row">
-        <div *ngFor="let product of products" class="col-lg-4 col-md-6 mb-4">
-          <app-card
-            [product]="product"
-            (addCart)="handleAddCart($event)"
-          ></app-card>
-        </div>
+      <div class="row" *ngIf="filteredProducts.length">
+        <ng-container *ngFor="let product of filteredProducts">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <app-card
+              [product]="product"
+              (addCart)="handleAddCart($event)"
+            ></app-card>
+          </div>
+        </ng-container>
       </div>
 
       <!--          <div class="row">-->
@@ -88,10 +94,22 @@ import { Product } from '../../data/products.data';
   styles: [],
 })
 export class CatalogComponent implements OnInit {
-  @Input() products!: any;
-  inCart: Array<{ count: number; product: Product }> = [];
+  @Input() products!: Product[];
+  filteredProducts: Product[] = [];
 
-  constructor() {}
+
+  inCart: Array<{ count: number; product: Product }> = [];
+  filter: any = 'all';
+
+  filterValues = [
+    { value: 'all', label: 'Показать все' },
+    { value: 'warehouse', label: 'В наличии' },
+    { value: 'sale', label: 'Со скидкой' },
+  ];
+
+  constructor() {
+
+  }
 
   handleAddCart(event: any) {
     //Есть ли такое в корзине
@@ -115,5 +133,17 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  setFilter(event: any) {
+    this.filter = event;
+    alert(this.filter);
+  }
+
+
+
   ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    const filteredProducts = [...this.products]
+    console.log(filteredProducts);
+  }
 }
