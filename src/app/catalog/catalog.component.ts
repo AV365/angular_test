@@ -20,7 +20,7 @@ import { Product } from '../../data/products.data';
     <section class="text-center">
       <h4 class="mb-5"><strong>Каталог</strong></h4>
 
-      <div class="row" *ngIf="filteredProducts.length">
+      <div class="row" *ngIf="filteredProducts">
         <ng-container *ngFor="let product of filteredProducts">
           <div class="col-lg-4 col-md-6 mb-4">
             <app-card
@@ -29,6 +29,7 @@ import { Product } from '../../data/products.data';
             ></app-card>
           </div>
         </ng-container>
+          {{filteredProducts | json}}
       </div>
 
       <!--          <div class="row">-->
@@ -97,7 +98,6 @@ export class CatalogComponent implements OnInit {
   @Input() products!: Product[];
   filteredProducts: Product[] = [];
 
-
   inCart: Array<{ count: number; product: Product }> = [];
   filter: any = 'all';
 
@@ -107,13 +107,11 @@ export class CatalogComponent implements OnInit {
     { value: 'sale', label: 'Со скидкой' },
   ];
 
-  constructor() {
-
-  }
+  constructor() {}
 
   handleAddCart(event: any) {
     //Есть ли такое в корзине
-    var isInCart = this.inCart.filter((item) => {
+    const isInCart = this.inCart.filter((item) => {
       return item.product.id === event.id;
     });
 
@@ -135,15 +133,28 @@ export class CatalogComponent implements OnInit {
 
   setFilter(event: any) {
     this.filter = event;
-    alert(this.filter);
+    console.log('filter ' + this.filter);
+    if (this.filter !== 'all') {
+      if (this.filter === 'warehouse') {
+        this.filteredProducts = this.products.filter((item: Product) => {
+          return item.count > 0;
+        });
+      }
+      if (this.filter === 'sale') {
+        this.filteredProducts = this.products.filter((item: Product) => {
+          return item.sale;
+        });
+      }
+    } else {
+      this.filteredProducts = [...this.products];
+    }
+
+    console.log(this.filteredProducts);
   }
-
-
 
   ngOnInit(): void {}
 
   ngOnChanges(): void {
-    const filteredProducts = [...this.products]
-    console.log(filteredProducts);
+    this.setFilter(this.filter);
   }
 }
