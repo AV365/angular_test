@@ -16,6 +16,7 @@ import { DropdownMenuModule } from './dropdown-menu/dropdown-menu.module';
 import { MenuModule } from './menu/menu.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogModule } from './catalog/catalog.module';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -30,7 +31,10 @@ import { CatalogModule } from './catalog/catalog.module';
     MenuModule,
     CatalogModule,
   ],
-  providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB' }],
+  providers: [{provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB'}],
   bootstrap: [AppComponent],
+  exports: [
+
+  ]
 })
 export class AppModule {}

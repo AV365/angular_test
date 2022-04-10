@@ -4,15 +4,7 @@ import { Product } from '../../data/products.data';
 @Component({
   selector: 'app-catalog',
   template: `
-    <section class="text-center" xmlns="http://www.w3.org/1999/html">
-      <a class="nav-link waves-effect">
-        <span class="badge bg-danger ms-2">{{ inCart.length }}</span>
-        <i class="fas fa-shopping-cart"></i>
-        <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-      </a>
-
-      <p>{{ inCart | json }}</p>
-    </section>
+<app-cart [products]="inCart" (deleteProductsAll)="handleCartDelete($event)" (deleteProductId)="handleCardProductDeleteId($event)"></app-cart>
     <app-toggle
       [toggles]="filterValues"
       (changed)="setFilter($event)"
@@ -98,7 +90,7 @@ export class CatalogComponent implements OnInit {
   @Input() products!: Product[];
   filteredProducts: Product[] = [];
 
-  inCart: Array<{ count: number; product: Product }> = [];
+  @Output() inCart: Array<{ count: number; product: Product }> = [];
   filter: any = 'all';
 
   filterValues = [
@@ -128,6 +120,26 @@ export class CatalogComponent implements OnInit {
         count: 1,
         product: event,
       });
+    }
+  }
+
+  handleCartDelete(event:any) {
+    if (event) {
+      this.inCart = []
+    }
+  }
+
+  handleCardProductDeleteId(id: number) {
+    if (id) {
+      for (let i=0;i<this.inCart.length;i++) {
+if (this.inCart[i].product.id === id) {
+  this.inCart = this.inCart.filter((item)=> {
+    return item.product.id !== id;
+  })
+}
+
+      }
+
     }
   }
 

@@ -16,7 +16,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
               <p><span class="badge bg-info">{{product.category}}</span></p>
               <p>Стоимость: <ng-container *ngIf="product.sale; then withsale_content else withoutsale_content"></ng-container></p>
-              <ng-template #withsale_content>{{product.sale}} <sup><s>{{product.price | currency}}</s></sup></ng-template>
+              <ng-template #withsale_content>{{product.sale | currency}} <sup><s>{{product.price}}</s></sup></ng-template>
               <ng-template #withoutsale_content>{{product.price | currency}}</ng-template>
               <p>Наличие: {{product.count > 0 && product.count+' шт.' || 'отсутствует на складе'}}</p>
               <app-button (click)="handleAddCart(product)" [color]="'primary'">В корзину</app-button>
