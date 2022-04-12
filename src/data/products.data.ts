@@ -9,6 +9,8 @@ export interface Product {
   imageUrl: string;
   category: string;
   tags?: string[];
+  count: number;
+  sale?: number;
 }
 
 export const products = [
@@ -23,6 +25,8 @@ export const products = [
     imageUrl: 'assets/images/leaf_rake.png',
     category: 'Garden',
     tags: ['rake', 'leaf', 'yard', 'home'],
+    sale: 15.24,
+    count: 27,
   },
   {
     id: 2,
@@ -34,6 +38,8 @@ export const products = [
     starRating: 4.2,
     imageUrl: 'assets/images/garden_cart.png',
     category: 'Garden',
+    sale: 15.24,
+    count: 0,
   },
   {
     id: 5,
@@ -46,6 +52,8 @@ export const products = [
     imageUrl: 'assets/images/hammer.png',
     category: 'Toolbox',
     tags: ['tools', 'hammer', 'construction'],
+    sale: 15.24,
+    count: 5,
   },
   {
     id: 8,
@@ -57,6 +65,8 @@ export const products = [
     starRating: 3.7,
     imageUrl: 'assets/images/saw.png',
     category: 'Toolbox',
+    sale: 15.24,
+    count: 0,
   },
   {
     id: 10,
@@ -68,7 +78,8 @@ export const products = [
     starRating: 4.6,
     imageUrl: 'assets/images/xbox-controller.png',
     category: 'Gaming',
+    count: 27,
   },
 ];
 
-export default products
+export default products;
