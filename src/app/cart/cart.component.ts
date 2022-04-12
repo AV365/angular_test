@@ -53,15 +53,15 @@ import { Product } from '../../data/products.data';
                   <td>
                     <ng-container
                       *ngIf="
-                        item.product.sale;
+                        item?.product?.sale;
                         then withsale_content;
                         else withoutsale_content
                       "
                     ></ng-container>
                     <ng-template #withsale_content
-                      >{{ item.product.sale | currency }}
+                      >{{ item?.product?.sale | currency }}
                       <sup
-                        ><s>{{ item.product.price }}</s></sup
+                        ><s>{{ item?.product?.price }}</s></sup
                       ></ng-template
                     >
                     <ng-template #withoutsale_content>{{
@@ -71,7 +71,7 @@ import { Product } from '../../data/products.data';
                   <td>
                     <ng-container
                       *ngIf="
-                        item.product.sale;
+                        item?.product?.sale;
                         then withsale_amount_content;
                         else withoutsale_amount_content
                       "
@@ -135,10 +135,10 @@ export class CartComponent implements OnInit {
       //количество count
       count = count + this.inCart[i].count;
       //общая стоимость price
-      this.inCart[i].product.sale ? price = price + (this.inCart[i].product.sale!*this.inCart[i].count) : price = price+ (this.inCart[i]?.product?.price*this.inCart[i].count);
+      this.inCart[i].product?.sale ? price = price + (this.inCart[i].product?.sale!*this.inCart[i].count) : price = price+ (this.inCart[i]?.product?.price*this.inCart[i].count);
 
       //общая скидка discount
-      this.inCart[i].product.sale ? discount = discount + (this.inCart[i].product.price!*this.inCart[i].count) - (this.inCart[i].product.sale!*this.inCart[i].count) : 0;
+      this.inCart[i].product?.sale ? discount = discount + (this.inCart[i].product.price!*this.inCart[i].count) - (this.inCart[i].product?.sale!*this.inCart[i].count) : 0;
     }
 
     switch (param) {

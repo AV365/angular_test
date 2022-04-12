@@ -91,7 +91,7 @@ export class CatalogComponent implements OnInit {
   filteredProducts: Product[] = [];
 
   @Output() inCart: Array<{ count: number; product: Product }> = [];
-  filter: any = 'all';
+  filter: string = 'all';
 
   filterValues = [
     { value: 'all', label: 'Показать все' },
@@ -101,7 +101,7 @@ export class CatalogComponent implements OnInit {
 
   constructor() {}
 
-  handleAddCart(event: any) {
+  handleAddCart(event: Product) {
     //Есть ли такое в корзине
     const isInCart = this.inCart.filter((item) => {
       return item.product.id === event.id;
@@ -111,7 +111,7 @@ export class CatalogComponent implements OnInit {
     if (isInCart.length) {
       this.inCart = this.inCart.map((item) => {
         if (item.product.id === event.id) {
-          item.count = +item.count + 1;
+          item.count += 1;
         }
         return item;
       });
@@ -123,7 +123,7 @@ export class CatalogComponent implements OnInit {
     }
   }
 
-  handleCartDelete(event:any) {
+  handleCartDelete(event:boolean) {
     if (event) {
       this.inCart = []
     }
@@ -143,18 +143,18 @@ if (this.inCart[i].product.id === id) {
     }
   }
 
-  setFilter(event: any) {
+  setFilter(event: string) {
     this.filter = event;
-    console.log('filter ' + this.filter);
+    //console.log('filter ' + this.filter);
     if (this.filter !== 'all') {
       if (this.filter === 'warehouse') {
         this.filteredProducts = this.products.filter((item: Product) => {
-          return item.count > 0;
+          return item?.count > 0;
         });
       }
       if (this.filter === 'sale') {
         this.filteredProducts = this.products.filter((item: Product) => {
-          return item.sale;
+          return item?.sale;
         });
       }
     } else {
