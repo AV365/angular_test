@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../data/products.data';
 
 @Component({
@@ -44,7 +44,7 @@ import { Product } from '../../data/products.data';
                   <td>Количество</td>
                   <td>Стоимость</td>
                   <td>Общая стоимость</td>
-                    <td></td>
+                  <td></td>
                 </tr>
                 <tr *ngFor="let item of inCart; let i = index">
                   <th scope="row">{{ i + 1 }}</th>
@@ -94,13 +94,31 @@ import { Product } from '../../data/products.data';
                         | currency
                     }}</ng-template>
                   </td>
-                    <td>        <a (click)="deleteProductId.emit(item.product.id)" class="fas fa-trash" style="cursor: pointer"></a></td>
+                  <td>
+                    <a
+                      (click)="deleteProductId.emit(item.product.id)"
+                      class="fas fa-trash"
+                      style="cursor: pointer"
+                    ></a>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <p>Всего товаров {{calcCartValues('count')}} на сумму {{calcCartValues('price') | number: '1.0-2' | currency}}, Скидка {{calcCartValues('discount') | number: '1.0-2' | currency}}</p>
-              <app-button [color]="'primary'" (click)="deleteProductsAll.emit(true)">Оформить заказ</app-button>
-              <app-button [color]="'warning'" (click)="deleteProductsAll.emit(true)">Очистить корзину</app-button>
+            <p>
+              Всего товаров {{ calcCartValues('count') }} на сумму
+              {{ calcCartValues('price') | number: '1.0-2' | currency }}, Скидка
+              {{ calcCartValues('discount') | number: '1.0-2' | currency }}
+            </p>
+            <app-button
+              [color]="'primary'"
+              (click)="deleteProductsAll.emit(true)"
+              >Оформить заказ</app-button
+            >
+            <app-button
+              [color]="'warning'"
+              (click)="deleteProductsAll.emit(true)"
+              >Очистить корзину</app-button
+            >
           </ng-container>
         </section></ng-container
       >
@@ -115,16 +133,13 @@ export class CartComponent implements OnInit {
   cartIsOpen: boolean = false;
   // inCartValues: object = {count: 0, price: 0, discount: 0}
   inCartCount: number = 0;
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
   toggleCartPreview() {
     this.cartIsOpen = !this.cartIsOpen;
   }
-
 
   calcCartValues(param: string) {
     this.inCartCount = 0;
@@ -135,35 +150,38 @@ export class CartComponent implements OnInit {
       //количество count
       count = count + this.inCart[i].count;
       //общая стоимость price
-      this.inCart[i].product?.sale ? price = price + (this.inCart[i].product?.sale!*this.inCart[i].count) : price = price+ (this.inCart[i]?.product?.price*this.inCart[i].count);
+      this.inCart[i].product?.sale
+        ? (price = price + this.inCart[i].product?.sale! * this.inCart[i].count)
+        : (price =
+            price + this.inCart[i]?.product?.price * this.inCart[i].count);
 
       //общая скидка discount
-      this.inCart[i].product?.sale ? discount = discount + (this.inCart[i].product.price!*this.inCart[i].count) - (this.inCart[i].product?.sale!*this.inCart[i].count) : 0;
+      this.inCart[i].product?.sale
+        ? (discount =
+            discount +
+            this.inCart[i].product.price! * this.inCart[i].count -
+            this.inCart[i].product?.sale! * this.inCart[i].count)
+        : 0;
     }
 
     switch (param) {
       case 'count': {
-        return count
-        break
+        return count;
+        break;
       }
       case 'price': {
-        return price
-        break
+        return price;
+        break;
       }
       case 'discount': {
-        return discount
-        break
+        return discount;
+        break;
       }
       default: {
-        return ''
+        return '';
       }
-
-
     }
-
   }
 
-  ngOnChanges() {
-
-  }
+  ngOnChanges() {}
 }

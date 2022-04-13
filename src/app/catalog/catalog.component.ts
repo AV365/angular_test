@@ -1,10 +1,15 @@
 import { Component, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { Product } from '../../data/products.data';
+import { products } from '../../data/products.data';
 
 @Component({
   selector: 'app-catalog',
   template: `
-<app-cart [products]="inCart" (deleteProductsAll)="handleCartDelete($event)" (deleteProductId)="handleCardProductDeleteId($event)"></app-cart>
+    <app-cart
+      [products]="inCart"
+      (deleteProductsAll)="handleCartDelete($event)"
+      (deleteProductId)="handleCardProductDeleteId($event)"
+    ></app-cart>
     <app-toggle
       [toggles]="filterValues"
       (changed)="setFilter($event)"
@@ -21,7 +26,7 @@ import { Product } from '../../data/products.data';
             ></app-card>
           </div>
         </ng-container>
-          {{filteredProducts | json}}
+        {{ filteredProducts | json }}
       </div>
 
       <!--          <div class="row">-->
@@ -87,7 +92,18 @@ import { Product } from '../../data/products.data';
   styles: [],
 })
 export class CatalogComponent implements OnInit {
-  @Input() products!: Product[];
+  @Input() products: Product[] = products;
+
+  public get getProducts(): Product[] {
+    if (this.filter === 'warehouse') {
+      return products.filter((p) => p?.count > 0);
+    }
+    if (this.filter === 'sale') {
+      return products.filter((p) => p?.sale);
+    }
+    return products;
+  }
+
   filteredProducts: Product[] = [];
 
   @Output() inCart: Array<{ count: number; product: Product }> = [];
@@ -99,7 +115,9 @@ export class CatalogComponent implements OnInit {
     { value: 'sale', label: 'Со скидкой' },
   ];
 
-  constructor() {}
+  constructor() {
+    this.setFilter(this.filter);
+  }
 
   handleAddCart(event: Product) {
     //Есть ли такое в корзине
@@ -123,48 +141,28 @@ export class CatalogComponent implements OnInit {
     }
   }
 
-  handleCartDelete(event:boolean) {
+  handleCartDelete(event: boolean) {
     if (event) {
-      this.inCart = []
+      this.inCart = [];
     }
   }
 
   handleCardProductDeleteId(id: number) {
     if (id) {
-      for (let i=0;i<this.inCart.length;i++) {
-if (this.inCart[i].product.id === id) {
-  this.inCart = this.inCart.filter((item)=> {
-    return item.product.id !== id;
-  })
-}
-
-      }
-
+      this.inCart = this.inCart.filter((item) => {
+        return item.product.id !== id;
+      });
     }
   }
 
   setFilter(event: string) {
     this.filter = event;
-    //console.log('filter ' + this.filter);
-    if (this.filter !== 'all') {
-      if (this.filter === 'warehouse') {
-        this.filteredProducts = this.products.filter((item: Product) => {
-          return item?.count > 0;
-        });
-      }
-      if (this.filter === 'sale') {
-        this.filteredProducts = this.products.filter((item: Product) => {
-          return item?.sale;
-        });
-      }
-    } else {
-      this.filteredProducts = [...this.products];
-    }
-
-    console.log(this.filteredProducts);
+    this.filteredProducts = this.getProducts;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(products);
+  }
 
   ngOnChanges(): void {
     this.setFilter(this.filter);

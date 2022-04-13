@@ -5,11 +5,13 @@ import {ButtonModule} from "../button/button.module";
 import {CardModule} from "../card/card.module";
 import {ToggleComponent} from "../toggle/toggle.component";
 import {CartComponent} from "../cart/cart.component";
+import { ProductComponent } from './product.component';
+import {CatalogRoutingModule} from "./catalog-routing.module";
 
 
 @NgModule({
-  declarations: [CatalogComponent, ToggleComponent, CartComponent],
-  imports: [CommonModule, ButtonModule, CardModule],
+  declarations: [CatalogComponent, ToggleComponent, CartComponent, ProductComponent],
+  imports: [CommonModule, ButtonModule, CardModule, CatalogRoutingModule],
   exports: [CatalogComponent]
 })
 export class CatalogModule {}
