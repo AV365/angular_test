@@ -5,7 +5,9 @@ import { products } from '../../data/products.data';
 @Component({
   selector: 'app-catalog',
   template: `
-    <app-cart
+      
+
+      <app-cart
       [products]="inCart"
       (deleteProductsAll)="handleCartDelete($event)"
       (deleteProductId)="handleCardProductDeleteId($event)"

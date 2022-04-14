@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {RouterModule, Router} from "@angular/router";
 
 @Component({
   selector: 'app-card',
@@ -6,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       <div class="card">
           <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
-              <a href="#!">
+              <a [routerLink]="['/catalog', product.id]">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
           </div>

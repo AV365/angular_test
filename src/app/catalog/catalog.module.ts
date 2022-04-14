@@ -7,11 +7,12 @@ import {ToggleComponent} from "../toggle/toggle.component";
 import {CartComponent} from "../cart/cart.component";
 import { ProductComponent } from './product.component';
 import {CatalogRoutingModule} from "./catalog-routing.module";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   declarations: [CatalogComponent, ToggleComponent, CartComponent, ProductComponent],
-  imports: [CommonModule, ButtonModule, CardModule, CatalogRoutingModule],
+  imports: [CommonModule, ButtonModule, CardModule, CatalogRoutingModule, RouterModule],
   exports: [CatalogComponent]
 })
 export class CatalogModule {}
