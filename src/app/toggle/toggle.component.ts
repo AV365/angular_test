@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {ActivatedRoute, Navigation, Router} from '@angular/router';
 
 @Component({
   selector: 'app-toggle',
@@ -9,7 +10,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
         [isDisabled]="filter === toggle.value ? true : false"
         
         *ngIf="toggle.value"
-        (click)="handleFilterButton(toggle.value)"
+(click)="handleFilterButton(toggle.value)"        
+
         >{{ toggle.label }}</app-button
       >
     </div>
@@ -20,12 +22,18 @@ export class ToggleComponent implements OnInit {
   @Input() toggles!: Array<{ value: string; label: string }>;
   @Input() filter: any = 'all'
   @Output() changed = new EventEmitter();
-  constructor() {}
+  currentUrl!: string
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.currentUrl = this.router.url
+  }
 
   ngOnInit(): void {}
 
-  handleFilterButton(value: any) {
+  handleFilterButton(value: string) {
+    this.router.navigate(['.'], {relativeTo: this.route, queryParams: {sort: value}})
+
     this.changed.emit(value);
     this.filter = value;
   }
+
 }

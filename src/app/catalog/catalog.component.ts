@@ -1,13 +1,12 @@
 import { Component, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { Product } from '../../data/products.data';
 import { products } from '../../data/products.data';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
   template: `
-      
-
-      <app-cart
+    <app-cart
       [products]="inCart"
       (deleteProductsAll)="handleCartDelete($event)"
       (deleteProductId)="handleCardProductDeleteId($event)"
@@ -28,7 +27,7 @@ import { products } from '../../data/products.data';
             ></app-card>
           </div>
         </ng-container>
-        {{ filteredProducts | json }}
+        {{ this.filter }}
       </div>
 
       <!--          <div class="row">-->
@@ -117,7 +116,9 @@ export class CatalogComponent implements OnInit {
     { value: 'sale', label: 'Со скидкой' },
   ];
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
+    this.filter = this.route.snapshot.queryParams['sort'] || 'all';
+    console.log('sort ' + this.filter);
     this.setFilter(this.filter);
   }
 
@@ -158,7 +159,7 @@ export class CatalogComponent implements OnInit {
   }
 
   setFilter(event: string) {
-    this.filter = event;
+    this.filter = this.route.snapshot.queryParams['sort'];
     this.filteredProducts = this.getProducts;
   }
 
@@ -167,6 +168,7 @@ export class CatalogComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    console.log('click')
     this.setFilter(this.filter);
   }
 }

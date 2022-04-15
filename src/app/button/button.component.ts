@@ -3,7 +3,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 @Component({
   selector: 'app-button',
   template: `
-    <buton
+    <a
       [attr.disabled]="isDisabled ? '' : null"
       [style.cursor]="isDisabled ? 'default' : 'pointer'"
       class="btn btn-primary"
@@ -11,7 +11,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
       [ngClass]="[currentColorClass, currentSizeClass]"
     >
       <ng-content></ng-content>
-    </buton>
+    </a>
   `,
   styles: [
     `
