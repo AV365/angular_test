@@ -11,10 +11,8 @@ import { ActivatedRoute } from '@angular/router';
       (deleteProductsAll)="handleCartDelete($event)"
       (deleteProductId)="handleCardProductDeleteId($event)"
     ></app-cart>
-    <app-toggle
-      [toggles]="filterValues"
-      (changed)="setFilter($event)"
-    ></app-toggle>
+    <app-toggle [toggles]="filterValues"></app-toggle>
+    {{ this.filter }}
     <section class="text-center">
       <h4 class="mb-5"><strong>Каталог</strong></h4>
 
@@ -27,7 +25,6 @@ import { ActivatedRoute } from '@angular/router';
             ></app-card>
           </div>
         </ng-container>
-        {{ this.filter }}
       </div>
 
       <!--          <div class="row">-->
@@ -117,9 +114,12 @@ export class CatalogComponent implements OnInit {
   ];
 
   constructor(private route: ActivatedRoute) {
-    this.filter = this.route.snapshot.queryParams['sort'] || 'all';
-    console.log('sort ' + this.filter);
-    this.setFilter(this.filter);
+    route.queryParams.subscribe((params) => {
+      //console.log(params['sort']);
+      this.filter = params['filter'] || 'all';
+      this.setFilter(this.filter);
+    });
+    //this.filter = this.route.snapshot.queryParams['sort'] || 'all';
   }
 
   handleAddCart(event: Product) {
@@ -159,16 +159,12 @@ export class CatalogComponent implements OnInit {
   }
 
   setFilter(event: string) {
-    this.filter = this.route.snapshot.queryParams['sort'];
+    //this.filter = this.route.snapshot.queryParams['sort'];
     this.filteredProducts = this.getProducts;
+    console.log('sort ' + this.filter);
   }
 
-  ngOnInit(): void {
-    console.log(products);
-  }
+  ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    console.log('click')
-    this.setFilter(this.filter);
-  }
+  ngOnChanges(): void {}
 }

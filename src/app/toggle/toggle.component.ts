@@ -30,7 +30,7 @@ export class ToggleComponent implements OnInit {
   ngOnInit(): void {}
 
   handleFilterButton(value: string) {
-    this.router.navigate(['.'], {relativeTo: this.route, queryParams: {sort: value}})
+    this.router.navigate(['.'], {relativeTo: this.route, queryParams: {filter: value}})
 
     this.changed.emit(value);
     this.filter = value;
