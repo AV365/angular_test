@@ -2,15 +2,13 @@ import { Component, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { Product } from '../../data/products.data';
 import { products } from '../../data/products.data';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../../services/data.service';
+import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-catalog',
   template: `
-    <app-cart
-      [products]="inCart"
-      (deleteProductsAll)="handleCartDelete($event)"
-      (deleteProductId)="handleCardProductDeleteId($event)"
-    ></app-cart>
+    <app-cart (deleteProductsAll)="handleCartDelete($event)"></app-cart>
     <app-toggle [toggles]="filterValues"></app-toggle>
     {{ this.filter }}
     <section class="text-center">
@@ -90,30 +88,35 @@ import { ActivatedRoute } from '@angular/router';
   styles: [],
 })
 export class CatalogComponent implements OnInit {
-  @Input() products: Product[] = products;
+  products: Product[] = this.dataService.getData();
+  //@Input() products: Product[] = products;
 
-  public get getProducts(): Product[] {
-    if (this.filter === 'warehouse') {
-      return products.filter((p) => p?.count > 0);
-    }
-    if (this.filter === 'sale') {
-      return products.filter((p) => p?.sale);
-    }
-    return products;
-  }
+  // public get getProducts(): Product[] {
+  //   if (this.filter === 'warehouse') {
+  //     return products.filter((p) => p?.count > 0);
+  //   }
+  //   if (this.filter === 'sale') {
+  //     return products.filter((p) => p?.sale);
+  //   }
+  //   return products;
+  // }
 
   filteredProducts: Product[] = [];
 
   @Output() inCart: Array<{ count: number; product: Product }> = [];
-  filter: string = 'all';
+  filter: string = 'none';
 
   filterValues = [
-    { value: 'all', label: 'Показать все' },
+    { value: 'none', label: 'Показать все' },
     { value: 'warehouse', label: 'В наличии' },
     { value: 'sale', label: 'Со скидкой' },
   ];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private dataService: DataService,
+    private catalogService: CatalogService
+  ) {
     route.queryParams.subscribe((params) => {
       //console.log(params['sort']);
       this.filter = params['filter'] || 'all';
@@ -151,20 +154,23 @@ export class CatalogComponent implements OnInit {
   }
 
   handleCardProductDeleteId(id: number) {
-    if (id) {
-      this.inCart = this.inCart.filter((item) => {
-        return item.product.id !== id;
-      });
-    }
+    // if (id) {
+    //   this.inCart = this.inCart.filter((item) => {
+    //     return item.product.id !== id;
+    //   });
+    // }
   }
 
   setFilter(event: string) {
     //this.filter = this.route.snapshot.queryParams['sort'];
-    this.filteredProducts = this.getProducts;
+    //this.filteredProducts = this.getProducts;
+    this.filteredProducts = this.catalogService.getProducts(this.filter);
     console.log('sort ' + this.filter);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(products);
+  }
 
   ngOnChanges(): void {}
 }

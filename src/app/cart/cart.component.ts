@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../data/products.data';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,14 +8,16 @@ import { Product } from '../../data/products.data';
     <section
       class="text-center"
       xmlns="http://www.w3.org/1999/html"
-      *ngIf="inCart.length"
+      *ngIf="this.cartService.getCount()"
     >
       <a
         class="nav-link waves-effect"
         (click)="toggleCartPreview()"
         style="cursor: pointer"
       >
-        <span class="badge bg-danger ms-2">{{ inCart.length }}</span>
+        <span class="badge bg-danger ms-2">{{
+          this.cartService.getCount()
+        }}</span>
         <i class="fas fa-shopping-cart"></i>
         <span class="clearfix d-none d-sm-inline-block"> Cart </span>
       </a>
@@ -22,7 +25,7 @@ import { Product } from '../../data/products.data';
       <!--      <p>{{ inCart | json }}</p>-->
       <app-button
         (click)="toggleCartPreview()"
-        *ngIf="inCart.length > 0"
+        *ngIf="this.cartService.getCount() > 0"
         [color]="'primary'"
       >
         <ng-container
@@ -35,7 +38,7 @@ import { Product } from '../../data/products.data';
       <ng-container *ngIf="cartIsOpen">
         <h2>Это корзина</h2>
         <section>
-          <ng-container *ngIf="inCart.length > 0">
+          <ng-container *ngIf="this.cartService.getCount() > 0">
             <table class="table table-striped">
               <tbody>
                 <tr>
@@ -46,7 +49,9 @@ import { Product } from '../../data/products.data';
                   <td>Общая стоимость</td>
                   <td></td>
                 </tr>
-                <tr *ngFor="let item of inCart; let i = index">
+                <tr
+                  *ngFor="let item of this.cartService.getCart(); let i = index"
+                >
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{ item.product.productName }}</td>
                   <td>{{ item.count }}</td>
@@ -96,7 +101,7 @@ import { Product } from '../../data/products.data';
                   </td>
                   <td>
                     <a
-                      (click)="deleteProductId.emit(item.product.id)"
+                      (click)="this.cartService.removeProduct(item.product.id)"
                       class="fas fa-trash"
                       style="cursor: pointer"
                     ></a>
@@ -123,17 +128,20 @@ import { Product } from '../../data/products.data';
         </section></ng-container
       >
     </section>
+    <p></p>
+    <p></p>
   `,
   styles: [],
 })
 export class CartComponent implements OnInit {
-  @Input('products') inCart: Array<{ count: number; product: Product }> = [];
-  @Output() deleteProductId = new EventEmitter();
+  //@Input('products') inCart: Array<{ count: number; product: Product }> = [];
+  inCart = this.cartService.getCart();
+  //@Output() deleteProductId = new EventEmitter();
   @Output() deleteProductsAll = new EventEmitter();
   cartIsOpen: boolean = false;
   // inCartValues: object = {count: 0, price: 0, discount: 0}
   inCartCount: number = 0;
-  constructor() {}
+  constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}
 
