@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { DEFAULT_CURRENCY_CODE,  } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 
 import { AppComponent } from './app.component';
 import { ButtonModule } from './button/button.module';
@@ -19,13 +18,10 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogModule } from './catalog/catalog.module';
 import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {AppRoutingModule} from "./app-routing.module";
-import {RouterModule} from "@angular/router";
-import {DataService} from "../services/data.service";
-
-
-
-
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,14 +34,11 @@ import {DataService} from "../services/data.service";
     ButtonModule,
     DropdownMenuModule,
     MenuModule,
-    CatalogModule
-
+    CatalogModule,
+    HttpClientModule,
   ],
-  providers: [{provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB'}],
+  providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB' }],
   bootstrap: [AppComponent],
-  exports: [
-
-  ],
-
+  exports: [],
 })
 export class AppModule {}

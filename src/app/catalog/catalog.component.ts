@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, Output, OnChanges } from '@angular/core';
-import { Product } from '../../data/products.data';
+import {IItemsProduct, IProduct, Product} from '../../data/products.data';
 import { products } from '../../data/products.data';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { CatalogService } from '../../services/catalog.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-catalog',
@@ -13,9 +14,9 @@ import { CatalogService } from '../../services/catalog.service';
     {{ this.filter }}
     <section class="text-center">
       <h4 class="mb-5"><strong>Каталог</strong></h4>
-
-      <div class="row" *ngIf="filteredProducts">
-        <ng-container *ngFor="let product of filteredProducts">
+        <div><code><pre>{{ products$ | async | json}}</pre></code></div>
+      <div class="row" *ngIf="products$">
+        <ng-container *ngFor="let product of productsFromApi">
           <div class="col-lg-4 col-md-6 mb-4">
             <app-card
               [product]="product"
@@ -88,20 +89,14 @@ import { CatalogService } from '../../services/catalog.service';
   styles: [],
 })
 export class CatalogComponent implements OnInit {
-  products: Product[] = this.dataService.getData();
-  //@Input() products: Product[] = products;
+  //products: Product[] = this.dataService.getData();
+  productsFromApi: IProduct[] = [];
+  products$: Observable<IItemsProduct> = this.catalogService.getProductsHttp('').subscribe((data) => this.productsFromApi = data.items)
 
-  // public get getProducts(): Product[] {
-  //   if (this.filter === 'warehouse') {
-  //     return products.filter((p) => p?.count > 0);
-  //   }
-  //   if (this.filter === 'sale') {
-  //     return products.filter((p) => p?.sale);
-  //   }
-  //   return products;
-  // }
+
 
   filteredProducts: Product[] = [];
+
 
   @Output() inCart: Array<{ count: number; product: Product }> = [];
   filter: string = 'none';
@@ -164,12 +159,15 @@ export class CatalogComponent implements OnInit {
   setFilter(event: string) {
     //this.filter = this.route.snapshot.queryParams['sort'];
     //this.filteredProducts = this.getProducts;
-    this.filteredProducts = this.catalogService.getProducts(this.filter);
-    console.log('sort ' + this.filter);
+    //this.filteredProducts = this.catalogService.getProducts(this.filter);
+    return this.products$ = this.catalogService.getProductsHttp('');
+    //console.log(this.products$)
+    //console.log('sort ' + this.filter);
   }
 
   ngOnInit(): void {
     console.log(products);
+    //console.log(this.products$)
   }
 
   ngOnChanges(): void {}

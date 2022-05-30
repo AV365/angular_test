@@ -13,6 +13,21 @@ export interface Product {
   sale?: number;
 }
 
+export interface IProduct {
+  id: number;
+  company: string;
+  title: string;
+  price: number;
+  image: string;
+  rating: number;
+  category: string;
+}
+
+export interface IItemsProduct {
+  items: IProduct[];
+}
+
+
 export const products = [
   {
     id: 1,

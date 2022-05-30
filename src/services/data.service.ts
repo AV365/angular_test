@@ -5,6 +5,7 @@ import products, { Product } from '../data/products.data';
   providedIn: 'root',
 })
 export class DataService {
+
   private data!: Array<Product>;
 
   setData(inData: Array<Product>) {
